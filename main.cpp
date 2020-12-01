@@ -63,7 +63,7 @@ void moveDisk(int locA, int locB, int** arr, int arrHeight){
   }
   stop = 0;
   for(int i = arrHeight-1; i >= 0; i--){
-    cout << "|" << arr[i][locB] << "|" ;
+    //cout << "|" << arr[i][locB] << "|" ;
     if(arr[i][locB] == 0 && stop < 1){
       stop++;
       arr[i][locB] = temp;
@@ -78,7 +78,7 @@ void towers(int numberOfDisks, int** arr, int fromCol, int toCol, int spare, int
   if(numberOfDisks >= 1){
     //cout << numberOfDisks << endl;
     towers(numberOfDisks-1,arr,fromCol,spare,toCol,pass);
-    moveDisk(fromCol,toCol,arr,numberOfDisks);
+    moveDisk(fromCol,toCol,arr,pass);
     //cout << numberOfDisks << endl;
     towers(numberOfDisks-1, arr, spare,  toCol,  fromCol, pass);
   }else{
