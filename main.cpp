@@ -63,6 +63,7 @@ void moveDisk(int locA, int locB, int** arr, int arrHeight){
   }
   stop = 0;
   for(int i = arrHeight-1; i >= 0; i--){
+    cout << "|" << arr[i][locB] << "|" ;
     if(arr[i][locB] == 0 && stop < 1){
       stop++;
       arr[i][locB] = temp;
@@ -72,16 +73,16 @@ void moveDisk(int locA, int locB, int** arr, int arrHeight){
 
 
 
-void towers(int numberOfDisks, int** arr, int fromCol, int toCol, int spare){
-  int temp = numberOfDisks;
+void towers(int numberOfDisks, int** arr, int fromCol, int toCol, int spare, int pass){
+  
   if(numberOfDisks >= 1){
     //cout << numberOfDisks << endl;
-    towers(numberOfDisks-1,arr,fromCol,spare,toCol);
+    towers(numberOfDisks-1,arr,fromCol,spare,toCol,pass);
     moveDisk(fromCol,toCol,arr,numberOfDisks);
     //cout << numberOfDisks << endl;
-    towers(numberOfDisks-1, arr, spare,  toCol,  fromCol);
+    towers(numberOfDisks-1, arr, spare,  toCol,  fromCol, pass);
   }else{
-    printArray(arr,temp,3);
+    printArray(arr,pass,3);
     
   }
   
@@ -101,14 +102,14 @@ int main(int argc, char *argv[]) {
  initArray(arr, a, b);
   printArray(arr, a, b);
   
-  //towers(a,arr,0,1,2);
+  towers(a,arr,0,1,2, a);
   //printArray(arr, a, b);
   
-  moveDisk(0, 2, arr, a);
+  //moveDisk(0, 2, arr, a);
 
-  printArray(arr, a, b);
+  //printArray(arr, a, b);
 
-  moveDisk(0, 1, arr, a);
+  //moveDisk(0, 1, arr, a);
 
   printArray(arr, a, b);
   deleteArray(arr, a);
