@@ -54,17 +54,18 @@ void moveDisk(int locA, int locB, int** arr, int arrHeight){
 
   // if the disk is on the first column move it and stop
   for(int i = 0; i < arrHeight;i++){
-    if(arr[locA][i] > 0 && stop < 1){
+    //cout << "|" << arr[i][locA] << "|" ;
+    if(arr[i][locA] > 0 && stop < 1){
       stop++;
-      temp = arr[locA][i];
-      arr[locA][i] = 0;
+      temp = arr[i][locA];
+      arr[i][locA] = 0;
     }
   }
   stop = 0;
   for(int i = arrHeight-1; i >= 0; i--){
-    if(arr[locB][i] == 0 && stop < 1){
+    if(arr[i][locB] == 0 && stop < 1){
       stop++;
-      arr[locB][i] = temp;
+      arr[i][locB] = temp;
     }
   }
 }
